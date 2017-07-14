@@ -23,6 +23,11 @@ import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
 
+import { Charts } from '../charts/charts.component';
+import { ChartistJs } from '../charts/components/chartistJs/chartistJs.component';
+import { ChartistJsService } from '../charts/components/chartistJs/chartistJs.service';
+import * as spinner from 'ng-spin-kit/app/spinners'
+
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +45,21 @@ import { UsersMapService } from './usersMap/usersMap.service';
     Feed,
     Todo,
     Calendar,
-    Dashboard
+    Dashboard,
+    Charts,
+    ChartistJs,
+    spinner.RotatingPlaneComponent,
+    spinner.DoubleBounceComponent,
+    spinner.WaveComponent,
+    spinner.WanderingCubesComponent,
+    spinner.PulseComponent,
+    spinner.ChasingDotsComponent,
+    spinner.CircleComponent,
+    spinner.ThreeBounceComponent,
+    spinner.CubeGridComponent,
+    spinner.WordPressComponent,
+    spinner.FadingCircleComponent,
+    spinner.FoldingCubeComponent
   ],
   providers: [
     CalendarService,
@@ -49,7 +68,9 @@ import { UsersMapService } from './usersMap/usersMap.service';
     PieChartService,
     TodoService,
     TrafficChartService,
-    UsersMapService
+    UsersMapService,
+    ChartistJsService
   ]
+
 })
 export class DashboardModule {}

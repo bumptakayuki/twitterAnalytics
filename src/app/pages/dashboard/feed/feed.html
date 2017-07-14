@@ -1,32 +1,177 @@
-<div class="feed-messages-container">
-  <div class="feed-message" *ngFor="let message of feed" (click)="expandMessage(message)">
-    <div class="message-icon" *ngIf="message.type == 'text-message'">
-      <img class="photo-icon" src="{{ ( message.author | baProfilePicture ) }}">
-    </div>
-    <div class="message-icon" *ngIf="message.type != 'text-message'">
-      <img class="photo-icon" src="{{ ( message.author | baProfilePicture ) }}">
-      <span class="sub-photo-icon" [ngClass]="message.type"></span>
-    </div>
-    <div class="text-block text-message">
-      <div class="message-header">
-        <span class="author">{{ message.author }} {{ message.surname}}</span>
-      </div>
-      <div class="message-content line-clamp" [ngClass]="{'line-clamp-2' : !message.expanded}">
-        <span *ngIf="message.preview">{{ message.header }} </span>{{ message.text }}
-      </div>
-      <div class="preview" [ngClass]="{'hidden': !message.expanded}" *ngIf="message.preview">
-        <a href="{{ message.link }}" target="_blank">
-          <img src="{{ ( message.preview | baAppPicture )}}">
-        </a>
-      </div>
-      <div [ngClass]="{'hidden': !message.expanded}" class="message-time">
-        <div class="post-time">
-          {{ message.time }}
+<div class="row">
+  <div class="col-md-6 ">
+
+    <ba-card title="dashboard.feed"
+             baCardClass="large-card with-scroll feed-panel">
+      <form (ngSubmit)="onSubmit()" #heroForm="ngForm" class="event-search-form">
+
+
+        <div class="form-group">
+          <label for="name">ハッシュタグ</label>
+          <input type="text" class="form-control" id="name"
+                 required
+                 [(ngModel)]="model.name" name="name"
+                 #name="ngModel">
         </div>
-        <div class="ago-time">
-          {{ message.ago }}
+
+        <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">検索</button>
+      </form>
+      <br>
+      <br>
+      <br>
+      <div class="feed-messages-container">
+
+        <div class="feed-message" *ngFor="let data of tweetData" (click)="expandMessage(message)">
+          <img class="photo-icon" src="{{ ( data.user.profile_image_url ) }}"
+               style=" margin-left: 10px;   border-radius: 50%;  border-top-left-radius: 50%;    border-top-right-radius: 50%;    border-bottom-right-radius: 50%;    border-bottom-left-radius: 50%;}">
+          <div class="horizontal-scroll">
+          <table class="table table-bordered">
+            <thead>
+            </thead>
+            <tbody>
+            <tr>
+              <td style="width: 100px">アカウント名</td>
+              <td>{{ data.user.screen_name }}</td>
+            </tr>
+            <tr>
+              <td>アカウント名</td>
+              <td>{{ data.user.name }}</td>
+            </tr>
+            <tr>
+              <td>アカウント説明</td>
+              <td>{{ data.user.description }}</td>
+            </tr>
+            <tr>
+              <td>アカウントのイイネ数</td>
+              <td>{{ data.user.favourites_count }}</td>
+            </tr>
+            <tr>
+              <td>フォロワー数</td>
+              <td>{{ data.user.followers_count }}</td>
+            </tr>
+            <tr>
+              <td>フォロー数</td>
+              <td>{{ data.user.friends_count }}</td>
+            </tr>
+            <tr>
+              <td>ツイート数</td>
+              <td>{{ data.user.statuses_count }}</td>
+            </tr>
+            <tr>
+              <td>ツイート内容</td>
+              <td>{{ data.text }}</td>
+            </tr>
+            <tr>
+              <td>ツイートへのイイネ数</td>
+              <td>{{ data.favorite_count }}</td>
+            </tr>
+            <tr>
+              <td>リツイート数</td>
+              <td>{{ data.retweet_count }}</td>
+            </tr>
+            </tbody>
+          </table>
+          </div>
+
         </div>
       </div>
+      <sk-fading-circle [isRunning]="model.spinner" [delay]="false"></sk-fading-circle>
+
+    </ba-card>
+  </div>
+
+
+  <div class="col-md-6 ">
+    <!--<div class="col-xlg-9 col-xl-6 col-lg-6  col-md-12 col-sm-12 col-12">-->
+    <div class="row">
+
+      <ba-card class="col-xlg-4 col-xl-12 col-lg-12 col-md-5 col-sm-12 col-12"
+               baCardClass="popular-app medium-card">
+        <div class="row">
+          <div class="col-md-12">
+            <ba-card title="chart.pies_and_donuts" baCardClass="with-scroll">
+              <div class="row">
+                <div class="col-md-12 col-lg-12"><h5 translate>上位１０件キーワード割合</h5>
+
+                  <ba-chartist-chart baChartistChartClass="ct-chart stacked-bar"
+                                     baChartistChartType="Pie"
+                                     [baChartistChartData]="chartData['labelsPieData']"
+                                     [baChartistChartOptions]="chartData['labelsPieOptions']"
+                                     [baChartistChartResponsive]="getResponsive(20, 100)">
+                  </ba-chartist-chart>
+                  <sk-fading-circle [isRunning]="model.spinner" [delay]="false"></sk-fading-circle>
+
+                </div>
+              </div>
+            </ba-card>
+          </div>
+        </div>
+      </ba-card>
+
+      <ba-card class="col-xlg-4 col-xl-12 col-lg-12 col-md-5 col-sm-12 col-12"
+               baCardClass="popular-app medium-card">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="col-md-12 col-lg-12"><h5 translate>ツイート時間帯</h5>
+
+              <ba-chartist-chart baChartistChartClass="ct-chart"
+                                 baChartistChartType="Line"
+                                 [baChartistChartData]="lineChartData['areaLineData']"
+                                 [baChartistChartOptions]="lineChartData['areaLineOptions']">
+              </ba-chartist-chart>
+
+              <sk-fading-circle [isRunning]="model.spinner" [delay]="false"></sk-fading-circle>
+
+            </div>
+          </div>
+        </div>
+      </ba-card>
+
+      <ba-card class="col-xlg-4 col-xl-12 col-lg-12 col-md-5 col-sm-12 col-12"
+               baCardClass="popular-app medium-card">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-12 col-lg-12"><h5 translate>ツイート時期(2016年)</h5>
+              <ba-chartist-chart baChartistChartClass="ct-chart"
+                                 baChartistChartType="Bar"
+                                 [baChartistChartData]="simpleBarData['simpleBarData']"
+                                 [baChartistChartOptions]="simpleBarData['simpleBarOptions']">
+              </ba-chartist-chart>
+            </div>
+          </div>
+        </div>
+      </ba-card>
+
     </div>
   </div>
 </div>
+<style>
+  table[_ngcontent-c4] tr[_ngcontent-c4]:nth-child(odd) {
+     background-color: transparent;
+  }
+
+  tr[_ngcontent-c4] {
+  height: 10px;
+   background-color: transparent;
+  }
+  table[_ngcontent-c4] {
+     background-color: transparent;
+  }
+
+  tr[_ngcontent-c4][_ngcontent-c4] {
+    /* height: 90px; */
+    background-color: transparent;
+  }
+  tr[_ngcontent-c4] {
+   height: 10px;
+  }
+  .horizontal-scroll{
+    padding:20px;
+  }
+
+  table{
+    font-size: 6px;
+  }
+
+</style>

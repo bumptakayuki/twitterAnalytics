@@ -6,6 +6,10 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.0.1.tgz#df488eada842b2d841ded750712292b18387b5b0"
 
+"@angular/common@^2.0.0":
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.10.tgz#a3a682d2228fa30ec23dd0eb57c8e887fba26997"
+
 "@angular/compiler-cli@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-4.0.1.tgz#90c60d491c12e1da901a0aeb3990470aa96e9bfa"
@@ -18,9 +22,17 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.0.1.tgz#15721edb148167a2d83b6f9324817e658eac8280"
 
+"@angular/compiler@^2.0.0":
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.10.tgz#f51fd34820b2a02c7cb61fbcf49873c58056fb0c"
+
 "@angular/core@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.0.1.tgz#0b110a001012076ea696460ccd922707bcdf51ba"
+
+"@angular/core@^2.0.0":
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.10.tgz#0b8320a65065965d998645b1f5cd3cf769b441ea"
 
 "@angular/forms@4.0.1":
   version "4.0.1"
@@ -34,9 +46,17 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.0.1.tgz#fd5debb2d3f6474350965e71c2674e2170d7cfcb"
 
+"@angular/platform-browser-dynamic@^2.0.0":
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.10.tgz#8df25dec2b06adc690cc9bc26448deccaebcd8ec"
+
 "@angular/platform-browser@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.0.1.tgz#4b9efbeb2fbb900de188743b988802d3aa2b33ff"
+
+"@angular/platform-browser@^2.0.0":
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.10.tgz#cbf25608148fb4ffef96cc5005ba5d7b3e093906"
 
 "@angular/platform-server@4.0.1":
   version "4.0.1"
@@ -672,8 +692,8 @@ bluebird@^3.3.0, bluebird@^3.3.5, bluebird@^3.4.7:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
-  version "4.11.6"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.6.tgz#53344adb14617a13f6e8dd2ce28905d1c0ba3215"
+  version "4.11.9"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
 
 body-parser@^1.16.1:
   version "1.17.1"
@@ -1778,8 +1798,8 @@ electron@1.6.2:
     extract-zip "^1.0.3"
 
 elliptic@^6.0.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.4.0.tgz#cac9af8762c85836187003c8dfe193e5e2eae5df"
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
   dependencies:
     bn.js "^4.4.0"
     brorand "^1.0.1"
@@ -2655,10 +2675,11 @@ has@^1.0.1:
     function-bind "^1.0.2"
 
 hash.js@^1.0.0, hash.js@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.0.3.tgz#1332ff00156c0a0ffdd8236013d07b77a0451573"
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
   dependencies:
-    inherits "^2.0.1"
+    inherits "^2.0.3"
+    minimalistic-assert "^1.0.1"
 
 hawk@~3.1.3:
   version "3.1.3"
@@ -2873,13 +2894,17 @@ inflight@^1.0.4, inflight@~1.0.5:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
 
 inherits@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
+
+inherits@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
 ini@^1.3.4, ini@~1.3.0, ini@~1.3.4:
   version "1.3.4"
@@ -3898,9 +3923,9 @@ mimeparse@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/mimeparse/-/mimeparse-0.1.4.tgz#dafb02752370fd226093ae3152c271af01ac254a"
 
-minimalistic-assert@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.0.tgz#702be2dda6b37f4836bcb3f5db56641b64a1d3d3"
+minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
 
 minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
@@ -4000,6 +4025,16 @@ ng-router-loader@2.1.0:
   dependencies:
     loader-utils "^0.2.16"
     recast "^0.11.20"
+
+ng-spin-kit@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ng-spin-kit/-/ng-spin-kit-2.0.0.tgz#07d1d88db03fc1037e65f9c9f341a084ed30640a"
+  dependencies:
+    "@angular/common" "^2.0.0"
+    "@angular/compiler" "^2.0.0"
+    "@angular/core" "^2.0.0"
+    "@angular/platform-browser" "^2.0.0"
+    "@angular/platform-browser-dynamic" "^2.0.0"
 
 ng2-ckeditor@1.1.6:
   version "1.1.6"
